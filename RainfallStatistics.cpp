@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	int months = 12, highest, lowest, count;
-	double rainfall[], average, total = 0;
+	double rainfall[months], average, total = 0;
 	string month[] = {"Jan.", "Feb.", "Mar.", "Apr.", "May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."};
 	string highestm, lowestm;
 	
@@ -15,7 +15,6 @@ int main()
 	{
 		cout << "Please enter the total rainfall for month " << month[count] << ": ";
 		cin >> rainfall[count];
-		cout << "Adding " << rainfall[count] << " + " << total << endl;
 		total += rainfall[count];
 	}
 	highest = rainfall[0];
@@ -40,4 +39,3 @@ int main()
 	cout << "Lowest Month: " << lowestm << endl;
 	return 0;
 }
-//Need help figuring out how to display the lowest month.

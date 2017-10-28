@@ -1,4 +1,4 @@
-//Let the user input the total rainfall, in inches, for each moth and display the total yearly rainfall, average rainfall,
+//Let the user input the total rainfall, in inches, for each month and display the total yearly rainfall, average rainfall,
 //highest rainfall month, and lowest rainfall month.
 
 #include<iostream>

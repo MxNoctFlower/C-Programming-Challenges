@@ -6,34 +6,16 @@
 //how many were cloudy, and how many were sunny. It should also report which of the three months had the largest number of rainy days. 
 //Data for the program can be found in the  RainOrShine.txt  file. 
 
-//The program is not counting the characters correctly.
-
 #include<iostream>
 #include<string>
 #include<fstream>
 using namespace std;
-int getRainy(char[3][30]);
-const int months = 3, days = 30;
 int main()
 {
-	int rain, cloud, sun;
+	int months = 3, days = 30,Rtotal = 0, Ctotal = 0, Stotal = 0, highest;
+	int rain[months] = {0}, cloud[months] = {0}, sun[months] = {0};
 	char summer[months][days];
-	string monthnames[] = {"Jun.","Jul.","Aug."};
-	ifstream inFile;
-	
-	rain = getRainy(summer);
-	cloud = getRainy(summer);
-	sun = getRainy(summer);
-	cout << rain << endl;
-	cout << cloud << endl;
-	cout << sun << endl;
-	return 0;
-	
-}
-int getRainy(char summer[months][days])
-{
-	int Rcount = 0, Rtotal = 0, Ccount = 0, Ctotal = 0, Scount = 0, Stotal = 0;
-	char weather[months][days];
+	string monthnames[] = {"Jun.","Jul.","Aug."}, highestm;
 	ifstream inFile;
 	
 	inFile.open("RainorShine.txt");
@@ -45,7 +27,7 @@ int getRainy(char summer[months][days])
 	{
 		for(int days = 0; days < 30; days++)
 		{
-			inFile >> weather[months][days];
+			inFile >> summer[months][days];
 			
 		}
 	}
@@ -54,20 +36,42 @@ int getRainy(char summer[months][days])
 	{
 		for(int days = 0; days < 30; days++)
 		{
-			switch(weather[months][days])
+			switch(summer[months][days])
 			{
-				case 'R': Rcount++;
+				case 'R': rain[months]++;
 					break;
-				case 'C': Ccount++;
+				case 'C': cloud[months]++;
 					break;
-				case 'S': Scount++;
+				case 'S': sun[months]++;
 			}
 		}
+		Rtotal += rain[months];
+		Ctotal += cloud[months];
+		Stotal += sun[months];
 	}
-	cout << Rcount << endl;
-	cout << Ccount << endl;
-	cout << Scount << endl;
-	return Rcount;
-	return Ccount;
-	return Scount;
+	highest = rain[0];
+	highestm = monthnames[0];
+	for(int months = 0; months < 3; months++)
+	{
+		if(rain[months] > highest)
+		{
+			highest = rain[months];
+			highestm = monthnames[months];
+			cout << highest << endl;
+			cout << highestm << endl;
+		}
+	}
+	cout << "Rainy days in " << monthnames[0] << ": " << rain[0] << endl;
+	cout << "Cloudy days in " << monthnames[0] << ": " << cloud[0] << endl;
+	cout << "Sunny days in " << monthnames[0] << ": " << sun[0] << endl;
+	cout << "Rainy days in " << monthnames[1] << ": " << rain[1] << endl;
+	cout << "Cloudy days in " << monthnames[1] << ": " << cloud[1] << endl;
+	cout << "Sunny days in " << monthnames[1] << ": " << sun[1] << endl;
+	cout << "Rainy days in " << monthnames[2] << ": " << rain[2] << endl;
+	cout << "Cloudy days in " << monthnames[2] << ": " << cloud[2] << endl;
+	cout << "Sunny days in " << monthnames[2] << ": " << sun[2] << endl;
+	cout << "Month with the highest number of rainy days: " << highestm << endl;
+	return 0;
+	
 }
+	

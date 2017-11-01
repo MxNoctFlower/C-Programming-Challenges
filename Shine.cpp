@@ -12,7 +12,7 @@
 using namespace std;
 int main()
 {
-	int months = 3, days = 30,Rtotal = 0, Ctotal = 0, Stotal = 0, highest;
+	int months = 3, days = 30, highest;
 	int rain[months] = {0}, cloud[months] = {0}, sun[months] = {0};
 	char summer[months][days];
 	string monthnames[] = {"Jun.","Jul.","Aug."}, highestm;
@@ -45,9 +45,6 @@ int main()
 				case 'S': sun[months]++;
 			}
 		}
-		Rtotal += rain[months];
-		Ctotal += cloud[months];
-		Stotal += sun[months];
 	}
 	highest = rain[0];
 	highestm = monthnames[0];
